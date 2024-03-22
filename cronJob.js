@@ -2,7 +2,7 @@ const axios = require('axios');
 const cron = require('node-cron');
 
 // Your website URL to request
-const websiteUrl = 'http://localhost:3001/';
+const websiteUrl = 'https://he-backend.onrender.com/';
 
 // Function to make the website request
 const makeRequest = async () => {
