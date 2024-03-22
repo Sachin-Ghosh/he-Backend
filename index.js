@@ -1,10 +1,14 @@
-const express = require('express');
+var express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const connectDB = require('./db');
 const bookingRouter = require('./routes/bookingRoute');
+const serviceRouter = require('./routes/serviceRoute');
+const userRoutes = require('./routes/userRoute');
 
-const app = express();
+const authenticateToken = require('./middleware/authMiddleware');
+
+var app = express();
 
 require('dotenv').config();
 require('./cronJob');
@@ -16,6 +20,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use('/api/bookings', bookingRouter);
+app.use('/api/services', serviceRouter);
+app.use('/api/users', userRoutes);
 
 app.get('/', (req, res) => {
    res.send("Hello world!");
